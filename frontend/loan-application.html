@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application - Skycap Loans</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loan-form.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="images/LogoKumbi.png" alt="Kumbi Logo" class="logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="requirements.html">Requirements</a></li>
+                <li><a href="contacts.html">Contacts</a></li>
+                <li><a href="loan-application.html" class="active">Loan Application</a></li>
+                <li><a href="staff-login.html">Staff Portal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Loan Application Form</h1>
+            <p>Complete all steps to submit your application</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <!-- Progress Indicator -->
+            <div class="progress-container">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Personal Info</div>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Loan Details</div>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Employment</div>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Terms & Deduction</div>
+                </div>
+                <div class="progress-step" data-step="5">
+                    <div class="step-number">5</div>
+                    <div class="step-title">Documents</div>
+                </div>
+            </div>
+
+            <form id="loanApplicationForm" class="loan-form">
+                <!-- Step 1: Personal Information -->
+                <div class="form-step active" data-step="1">
+                    <h2>Particulars of Borrower</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Surname *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="idNumber">ID/Omang *</label>
+                            <input type="text" id="idNumber" name="idNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactNumber">Contact Number *</label>
+                            <input type="tel" id="contactNumber" name="contactNumber" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="physicalAddress">Physical Address *</label>
+                        <input type="text" id="physicalAddress" name="physicalAddress" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postalAddress">Postal Address *</label>
+                        <input type="text" id="postalAddress" name="postalAddress" required>
+                    </div>
+
+                    <h3>Next of Kin</h3>
+                    
+                    <div class="form-group">
+                        <label for="kinName">Name *</label>
+                        <input type="text" id="kinName" name="kinName" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="kinRelationship">Relationship *</label>
+                            <input type="text" id="kinRelationship" name="kinRelationship" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kinAddress">Address *</label>
+                            <input type="text" id="kinAddress" name="kinAddress" required>
+                        </div>
+                    </div>
+
+                    <h3>Spouse Consent</h3>
+                    
+                    <div class="form-group">
+                        <label for="marriedInCommunity">Are you married in community of property? *</label>
+                        <select id="marriedInCommunity" name="marriedInCommunity" required>
+                            <option value="">Select...</option>
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+
+                    <div id="spouseFields" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="spouseName">Spouse Full Name</label>
+                                <input type="text" id="spouseName" name="spouseName" placeholder="Full name of Spouse">
+                            </div>
+                            <div class="form-group">
+                                <label for="spouseIdNumber">Spouse Maiden Name *</label>
+                                <input type="text" id="spouseIdNumber" name="spouseIdNumber" placeholder="Previous Surname">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="spouseName">Spouse ID/Omang *</label>
+                                <input type="text" id="spouseName" name="spouseName" placeholder="Spouse ID/Omang">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="spouseName">Spouse Physical Address</label>
+                                <input type="text" id="spouseName" name="spouseName" placeholder="Spouse Current Location">
+                            </div>
+                            <div class="form-group">
+                                <label for="spouseIdNumber">Spouse Cell Number *</label>
+                                <input type="text" id="spouseIdNumber" name="spouseIdNumber" placeholder="Current cell number">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Loan Details -->
+                <div class="form-step" data-step="2">
+                    <h2>Details of Loan</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="loanAmount">Loan Amount (P) *</label>
+                            <input type="number" id="loanAmount" name="loanAmount" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="interestRate">Interest Rate (%) *</label>
+                            <input type="number" id="interestRate" name="interestRate" step="0.01" required readonly value="30">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="totalAmount">Total Amount to be Paid (P) *</label>
+                            <input type="number" id="totalAmount" name="totalAmount" step="0.01" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="loanPeriodMonths">Loan Period (months) *</label>
+                            <input type="number" id="loanPeriodMonths" name="loanPeriodMonths" min="1" max="60" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loanDate">Date *</label>
+                        <input type="date" id="loanDate" name="loanDate" required>
+                    </div>
+
+                    <h3>Repayment Arrangements</h3>
+                    
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="repaymentMethod" value="salary_deduction">
+                            Salary Deduction
+                        </label>
+                        <label>
+                            <input type="checkbox" name="repaymentMethod" value="debit_order">
+                            Debit Order
+                        </label>
+                    </div>
+
+                    <h3>Bank Account Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="bankName">Bank Name *</label>
+                        <input type="text" id="bankName" name="bankName" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="accountNumber">Account Number *</label>
+                            <input type="text" id="accountNumber" name="accountNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="branch">Branch *</label>
+                            <input type="text" id="branch" name="branch" required>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 3: Employment details -->
+                <div class="form-step" data-step="3">
+                    <h2>Employment Details</h2>
+                    
+                    <div class="form-group">
+                        <label for="empName">Employer Name *</label>
+                        <input type="text" id="empName" name="empName" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                        <label for="empAdd">Employer Address *</label>
+                        <input type="text" id="empAdd" name="empAdd" required>
+                    </div>
+                        <div class="form-group">
+                        <label for="empNumber">Employer Contact Number *</label>
+                        <input type="text" id="empNumber" name="empNumber" required>
+                    </div>
+                    </div>
+                    <div class="form-row">
+                    <div class="form-group">
+                        <label for="jobTitle">Job Title/ Position *</label>
+                        <input type="text" id="jobTitle" name="jobTitle" required>
+                    </div>
+                    <div class="form-group">
+                            <label for="monthIncome">Monthly Income (P) *</label>
+                            <input type="number" id="monthIncome" name="monthIncome" step="0.01" required>
+                    </div>
+                    </div>
+                </div>
+                <!-- Step 4: Terms and Deduction -->
+                <div class="form-step" data-step="4">
+                    <h2>General Conditions</h2>
+                    
+                    <div class="terms-container">
+                        <div class="term-item">
+                            <label>
+                                <input type="checkbox" name="terms" value="early_repayment" required>
+                                <span>Early Repayment. In the event that the Borrower elects to repay the Loan together with all accrued and unpaid interest thereon prior to the Maturity Date, the Borrower shall also pay an Early Repayment Penalty of 5% of the principal amount with a maximum not exceeding the principal amount.</span>
+                            </label>
+                        </div>
+                        <div class="term-item">
+                            <label>
+                                <input type="checkbox" name="terms" value="no_insurance" required>
+                                <span>No insurance will be taken on client's behalf regarding the disbursed loan.</span>
+                            </label>
+                        </div>
+                        <div class="term-item">
+                            <label>
+                                <input type="checkbox" name="terms" value="cooling_period" required>
+                                <span>The borrower will be entitled to 2 days cooling period from the day the loan is disbursed.</span>
+                            </label>
+                        </div>
+                        <div class="term-item">
+                            <label>
+                                <input type="checkbox" name="terms" value="legal_action" required>
+                                <span>It is the policy of Kumbi Beat Holdings to obtain money judgment against all delinquent borrowers when settlement of the loan default cannot be achieved.</span>
+                            </label>
+                        </div>
+                        <div class="term-item">
+                            <label>
+                                <input type="checkbox" name="terms" value="repay_on_time" required>
+                                <span>I undertake to repay the loan amount on due date(s), no penalties will be charged.</span>
+                            </label>
+                        </div>
+                        <div class="term-item">
+                            <label>
+                                <input type="checkbox" name="terms" value="disclosures" required>
+                                <span>All the statutory disclosures have been made to me and the dispute resolution process has been explained.</span>
+                            </label>
+                        </div>
+                        <div class="term-item">
+                            <label>
+                                <input type="checkbox" name="terms" value="financially_capable" required>
+                                <span>I am in a position, financially and legally, to enter into this agreement.</span>
+                            </label>
+                        </div>
+                        <div class="term-item">
+                            <label>
+                                <input type="checkbox" name="terms" value="truthful_disclosure" required>
+                                <span>I have to the best of my knowledge truthfully disclosed all relevant facts regarding my current and expected future financial position.</span>
+                            </label>
+                        </div>
+                        <div class="term-item">
+                            <label>
+                                <input type="checkbox" name="terms" value="credit_check" required>
+                                <span>I consent that all legal means can be employed by the lender to establish my creditworthiness.</span>
+                            </label>
+                        </div>
+                        <div class="term-item">
+                            <label>
+                                <input type="checkbox" name="terms" value="inform_changes" required>
+                                <span>I undertake to inform the lender of any change in my particulars in due course.</span>
+                            </label>
+                        </div>
+                        <div class="term-item">
+                            <label>
+                                <input type="checkbox" name="terms" value="fully_explained" required>
+                                <span>The loan agreement has been fully explained to me and all questions I asked were answered to my satisfaction.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 30px;">
+                        <label for="borrowerSignature">I declare that, as a borrower, all blank spaces were duly completed by me *</label>
+                        <input type="text" id="borrowerSignature" name="borrowerSignature" placeholder="Full name of borrower serves as signature" required>
+                    </div>
+
+                    <h3>Deduction Form</h3>
+                    
+                    <div class="form-group">
+                        <label for="deductionAmount">Deduction Amount (P)</label>
+                        <input type="number" id="deductionAmount" name="deductionAmount" step="0.01">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstDeductionDate">First Deduction Date</label>
+                            <input type="date" id="firstDeductionDate" name="firstDeductionDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastDeductionDate">Last Deduction Date</label>
+                            <input type="date" id="lastDeductionDate" name="lastDeductionDate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deductionSignature">Signature</label>
+                        <input type="text" id="deductionSignature" name="deductionSignature" placeholder="Full names act as signature">
+                    </div>
+                </div>
+
+                <!-- Step 5: Document Upload -->
+                <div class="form-step" data-step="5">
+                    <h2>Upload Required Documents</h2>
+                    
+                    <div class="upload-info">
+                        <p>Please upload the following documents as a single file to support your application:</p>
+                        <ul>
+                            <li>Copy of National ID (Omang) *</li>
+                            <li>Recent Payslip *</li>
+                            <li>Employment Letter *</li>
+                            <li>Bank Statements (last 3 months) *</li>
+                                                    </ul>
+                        <p class="note">Accepted formats: PDF, JPG, PNG, DOC, DOCX (Max 10MB per file)</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="attachments">Select File *</label>
+                        <input type="file" id="attachments" name="attachments" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" required>
+                        <div id="fileList" class="file-list"></div>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>Review Your Application</h3>
+                        <p>Please review all information before submitting. Once submitted, your application will be reviewed by our team.</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">Previous</button>
+                    <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+                    <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">Submit Application</button>
+                </div>
+            </form>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message" style="display: none;">
+                <h2>Application Submitted Successfully!</h2>
+                <p>Thank you for your loan application. Your reference number is: <strong id="referenceNumber"></strong></p>
+                <p>Our team will review your application and contact you within <h3>1 business day / 24 hours</h3>.</p>
+                <a href="index.html" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-warning">
+                <strong>Warning:</strong> "Borrowing more than you can afford can lead to financial difficulties"
+            </div>
+            <p>&copy; 2026 Kumbi Beat Holdings. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/loan-form.js"></script>
+</body>
+</html>

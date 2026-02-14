@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Login - Skycap Loans</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/staff.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <img src="images/LogoKumbi.png" alt="Kumbi Logo" class="login-logo">
+                <h1>Staff Portal</h1>
+                <p>Login to access the system</p>
+            </div>
+
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required autocomplete="username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+
+                <div class="error-message" id="errorMessage"></div>
+
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+
+            <div class="login-footer">
+                <a href="index.html">← Back to Website</a>
+            </div>
+        </div>
+
+        <div class="login-info">
+            <h3>Default Login Credentials</h3>
+            <div class="credentials">
+                <p><strong>Administrator:</strong></p>
+                <p>Username: admin | Password: password123</p>
+                
+                <p><strong>Loan Officer (Maker):</strong></p>
+                <p>Username: maker1 | Password: password123</p>
+                
+                <p><strong>Verifier (Checker):</strong></p>
+                <p>Username: checker1 | Password: password123</p>
+                
+                <p><strong>Accountant:</strong></p>
+                <p>Username: accountant1 | Password: password123</p>
+            </div>
+            <p class="note">Please change your password after first login</p>
+        </div>
+    </div>
+
+    <script src="js/staff-login.js"></script>
+</body>
+</html>
