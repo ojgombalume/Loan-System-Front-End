@@ -1,0 +1,15 @@
+{
+  "name": "skycap-loans",
+  "version": "1.0.0",
+  "description": "Skycap Loans Management System",
+  "scripts": {
+    "build": "echo 'Building frontend...'",
+    "start": "echo 'Development server'"
+  },
+  "dependencies": {
+    "aws-amplify": "^6.0.0"
+  },
+  "devDependencies": {
+    "@aws-amplify/cli": "^12.0.0"
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "API Gateway for Skycap Loans",
+  "Parameters": {
+    "AuthHandlerArn": {
+      "Type": "String",
+      "Description": "ARN of the Auth Lambda function"
+    },
+    "LoansHandlerArn": {
+      "Type": "String",
+      "Description": "ARN of the Loans Lambda function"
+    },
+    "RepaymentsHandlerArn": {
+      "Type": "String",
+      "Description": "ARN of the Repayments Lambda function"
+    },
+    "env": {
+      "Type": "String",
+      "Default": "prod"
+    }
+  },
+  "Resources": {
+    "SkycapAPI": {
+      "Type": "AWS::ApiGateway::RestApi",
+      "Properties": {
+        "Name": {
+          "Fn::Sub": "SkycapLoansAPI-${env}"
+        },
+        "Description": "API Gateway for Skycap Loans Management System",
+        "EndpointConfiguration": {
+          "Types": ["REGIONAL"]
+        }
+      }
+    },
+    "ApiResource": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": ["SkycapAPI", "RootResourceId"]
+        },
+        "PathPart": "api",
+        "RestApiId": {
+          "Ref": "SkycapAPI"
+        }
+      }
+    },
+    "AuthResource": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiResource"
+        },
+        "PathPart": "auth",
+        "RestApiId": {
+          "Ref": "SkycapAPI"
+        }
+      }
+    },
+    "AuthProxyResource": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "AuthResource"
+        },
+        "PathPart": "{proxy+}",
+        "RestApiId": {
+          "Ref": "SkycapAPI"
+        }
+      }
+    },
+    "AuthProxyMethod": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "ANY",
+        "ResourceId": {
+          "Ref": "AuthProxyResource"
+        },
+        "RestApiId": {
+          "Ref": "SkycapAPI"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "Type": "AWS_PROXY",
+          "IntegrationHttpMethod": "POST",
+          "Uri": {
+            "Fn::Sub": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${AuthHandlerArn}/invocations"
+          }
+        }
+      }
+    },
+    "LoansResource": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiResource"
+        },
+        "PathPart": "loans",
+        "RestApiId": {
+          "Ref": "SkycapAPI"
+        }
+      }
+    },
+    "LoansProxyResource": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "LoansResource"
+        },
+        "PathPart": "{proxy+}",
+        "RestApiId": {
+          "Ref": "SkycapAPI"
+        }
+      }
+    },
+    "LoansProxyMethod": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "ANY",
+        "ResourceId": {
+          "Ref": "LoansProxyResource"
+        },
+        "RestApiId": {
+          "Ref": "SkycapAPI"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "Type": "AWS_PROXY",
+          "IntegrationHttpMethod": "POST",
+          "Uri": {
+            "Fn::Sub": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LoansHandlerArn}/invocations"
+          }
+        }
+      }
+    },
+    "LoansMethod": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "ANY",
+        "ResourceId": {
+          "Ref": "LoansResource"
+        },
+        "RestApiId": {
+          "Ref": "SkycapAPI"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "Type": "AWS_PROXY",
+          "IntegrationHttpMethod": "POST",
+          "Uri": {
+            "Fn::Sub": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LoansHandlerArn}/invocations"
+          }
+        }
+      }
+    },
+    "RepaymentsResource": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiResource"
+        },
+        "PathPart": "repayments",
+        "RestApiId": {
+          "Ref": "SkycapAPI"
+        }
+      }
+    },
+    "RepaymentsProxyResource": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "RepaymentsResource"
+        },
+        "PathPart": "{proxy+}",
+        "RestApiId": {
+          "Ref": "SkycapAPI"
+        }
+      }
+    },
+    "RepaymentsProxyMethod": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "ANY",
+        "ResourceId": {
+          "Ref": "RepaymentsProxyResource"
+        },
+        "RestApiId": {
+          "Ref": "SkycapAPI"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "Type": "AWS_PROXY",
+          "IntegrationHttpMethod": "POST",
+          "Uri": {
+            "Fn::Sub": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${RepaymentsHandlerArn}/invocations"
+          }
+        }
+      }
+    },
+    "RepaymentsMethod": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "ANY",
+        "ResourceId": {
+          "Ref": "RepaymentsResource"
+        },
+        "RestApiId": {
+          "Ref": "SkycapAPI"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "Type": "AWS_PROXY",
+          "IntegrationHttpMethod": "POST",
+          "Uri": {
+            "Fn::Sub": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${RepaymentsHandlerArn}/invocations"
+          }
+        }
+      }
+    },
+    "Deployment": {
+      "Type": "AWS::ApiGateway::Deployment",
+      "DependsOn": [
+        "AuthProxyMethod",
+        "LoansProxyMethod",
+        "LoansMethod",
+        "RepaymentsProxyMethod",
+        "RepaymentsMethod"
+      ],
+      "Properties": {
+        "RestApiId": {
+          "Ref": "SkycapAPI"
+        },
+        "StageName": {
+          "Ref": "env"
+        }
+      }
+    },
+    "AuthLambdaPermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "AuthHandlerArn"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Sub": "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${SkycapAPI}/*/*"
+        }
+      }
+    },
+    "LoansLambdaPermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "LoansHandlerArn"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Sub": "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${SkycapAPI}/*/*"
+        }
+      }
+    },
+    "RepaymentsLambdaPermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "RepaymentsHandlerArn"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Sub": "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${SkycapAPI}/*/*"
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "ApiEndpoint": {
+      "Description": "API Gateway endpoint URL",
+      "Value": {
+        "Fn::Sub": "https://${SkycapAPI}.execute-api.${AWS::Region}.amazonaws.com/${env}"
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-ApiEndpoint"
+        }
+      }
+    },
+    "ApiId": {
+      "Description": "API Gateway ID",
+      "Value": {
+        "Ref": "SkycapAPI"
+      }
+    }
+  }
+}

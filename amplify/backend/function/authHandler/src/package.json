@@ -1,0 +1,10 @@
+{
+  "name": "auth-handler",
+  "version": "1.0.0",
+  "description": "Authentication handler for Skycap Loans",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.1400.0",
+    "jsonwebtoken": "^9.0.2"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "api": {
+    "skycaploansapi": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "storage": {
+    "skycapdb": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "skycapdocuments": {
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
+  },
+  "function": {
+    "authHandler": {
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "loansHandler": {
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "repaymentsHandler": {
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  }
+}

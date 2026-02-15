@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Skycap Loans</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/staff.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="images/LogoKumbi.png" alt="Logo" class="sidebar-logo">
+                <h2>Skycap Loans</h2>
+            </div>
+
+            <nav class="sidebar-nav">
+               <a href="staff-dashboard.html" class="nav-item active">
+    <span class="material-symbols-outlined">dashboard</span> Dashboard
+</a>
+                <a href="staff-loans.html" class="nav-item">
+                    <span>📋</span> Loan Applications
+                </a>
+                <a href="staff-repayments.html" class="nav-item">
+                    <span>💰</span> Repayments
+                </a>
+                <div id="adminMenu" style="display: none;">
+                    <a href="staff-users.html" class="nav-item">
+                        <span>👥</span> User Management
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <div class="user-details">
+                        <div class="user-name" id="userName"></div>
+                        <div class="user-role" id="userRole"></div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary btn-sm" id="logoutBtn">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Dashboard</h1>
+                <div class="header-actions">
+                    <span class="date" id="currentDate"></span>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <!-- Statistics Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📝</div>
+                        <div class="stat-details">
+                            <div class="stat-value" id="totalLoans">0</div>
+                            <div class="stat-label">Total Applications</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-details">
+                            <div class="stat-value" id="pendingLoans">0</div>
+                            <div class="stat-label">Pending Review</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-details">
+                            <div class="stat-value" id="approvedLoans">0</div>
+                            <div class="stat-label">Approved</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">💵</div>
+                        <div class="stat-details">
+                            <div class="stat-value" id="disbursedLoans">0</div>
+                            <div class="stat-label">Disbursed</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">❌</div>
+                        <div class="stat-details">
+                            <div class="stat-value" id="rejectedLoans">0</div>
+                            <div class="stat-label">Rejected</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-details">
+                            <div class="stat-value" id="totalAmount">P 0.00</div>
+                            <div class="stat-label">Total Loan Amount</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="content-section">
+                    <h2>Recent Loan Applications</h2>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Ref No.</th>
+                                    <th>Applicant</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentLoansTable">
+                                <tr>
+                                    <td colspan="6" class="text-center">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Quick Actions (Role-based) -->
+                <div class="content-section">
+                    <h2>Quick Actions</h2>
+                    <div class="quick-actions">
+                        <div id="checkerActions" style="display: none;">
+                            <button class="btn btn-primary" onclick="window.location.href='staff-loans.html?status=pending'">
+                                Review Pending Applications
+                            </button>
+                        </div>
+                        <div id="accountantActions" style="display: none;">
+                            <button class="btn btn-success" onclick="window.location.href='staff-loans.html?status=approved'">
+                                Process Disbursements
+                            </button>
+                            <button class="btn btn-info" onclick="window.location.href='staff-repayments.html'">
+                                Record Repayment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/staff-common.js"></script>
+    <script src="js/staff-dashboard.js"></script>
+</body>
+</html>
